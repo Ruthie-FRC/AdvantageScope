@@ -186,7 +186,7 @@ export class NT4_Client {
       let requestLength = new Date().getTime() - requestStart;
       setTimeout(() => this.connectOnAlive(), 350 - requestLength);
     } else {
-      this.activeServerPort = parseInt(result.url.split(":")[2].split("/")[0], 10);
+      this.activeServerPort = parseInt(result.url.split(":")[2].split("/")[0]);
       this.ws_connect();
     }
   }
