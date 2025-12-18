@@ -22,9 +22,9 @@ export const PROTO_PREFIX = "proto:";
 export const PHOTON_PREFIX = "photonstruct:";
 export const MAX_SEARCH_RESULTS = 128;
 export const MERGE_PREFIX = "Log";
-export const MERGE_PREFIX_REGEX = new RegExp(/^\/?Log\d+/);
-export const SEPARATOR_REGEX = new RegExp(/\/|:/);
-export const SEPARATOR_REGEX_PHOENIX = new RegExp(/\/|:|_/);
+export const MERGE_PREFIX_REGEX = /^\/?Log\d+/;
+export const SEPARATOR_REGEX = /\/|:/;
+export const SEPARATOR_REGEX_PHOENIX = /\/|:|_/;
 export const PHOENIX_PREFIX = "Phoenix6";
 export const ENABLED_KEYS = [
   "/DriverStation/Enabled",
@@ -613,7 +613,7 @@ export function mergeMechanismStates(states: MechanismState[]): MechanismState {
 const SEARCH_FUSE = new Fuse([] as string[], { findAllMatches: true, ignoreLocation: true });
 
 export function searchFields(log: Log, query: string): string[] {
-  if (query.length === 0) return [];
+  if (query.length == 0) return [];
   SEARCH_FUSE.setCollection(log.getFieldKeys());
   return SEARCH_FUSE.search(query)
     .slice(0, MAX_SEARCH_RESULTS)
