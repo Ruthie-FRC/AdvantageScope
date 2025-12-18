@@ -204,8 +204,7 @@ export function buildCanFramePayload<Frame extends NonPeriodicFrame>(
         throw new UnreachableError(signalSpec.type);
       }
     } catch (e: any) {
-      console.log(`decodedValue=${decodedValue.toNumber()} encodedValue=${encodedValue.toNumber()}`);
-      const message = `Failed to encode signal "${signalSpec.name}" on frame "${frameSpec.name}"`;
+      const message = `Failed to encode signal "${signalSpec.name}" on frame "${frameSpec.name}". decodedValue=${decodedValue.toNumber()} encodedValue=${encodedValue.toNumber()}`;
       console.error(message, e);
       throw new Error(message);
     }
